@@ -1,0 +1,11 @@
+{
+    "require-dev": {
+        "symfony/maker-bundle": "^1.68"
+    },
+    "require": {
+        "symfony/twig-bundle": "^7.4",
+        "symfony/asset": "^7.4",
+        "symfony/orm-pack": "^2.7",
+        "symfony/profiler-pack": "^1.0"
+    }
+}
