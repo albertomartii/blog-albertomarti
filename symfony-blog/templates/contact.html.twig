@@ -1,27 +1,41 @@
-{{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
-{{ form_errors(form) }}
-<div class="form-group">
-    <div class="col-xs-6">
-        {{ form_row(form.firstName, {'attr': {'class':'form-control'}}) }}
-    </div>
-    <div class="col-xs-6">
-        {{ form_row(form.lastName, {'attr': {'class':'form-control'}}) }}
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div id="contact" class="container" style="padding-top: 100px; padding-bottom: 80px;">
+    <div class="row">
+        <div class="col-md-8 col-md-offset-2">
+            <h2 style="font-weight: bold; margin-bottom: 30px;">Contact Us</h2>
+
+            {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+            {{ form_errors(form) }}
+
+            <div class="form-group">
+                <div class="col-xs-6">
+                    {{ form_row(form.firstName, {'attr': {'class':'form-control'}}) }}
+                </div>
+                <div class="col-xs-6">
+                    {{ form_row(form.lastName, {'attr': {'class':'form-control'}}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    {{ form_row(form.email, {'attr': {'class':'form-control'}}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    {{ form_row(form.subject, {'attr': {'class':'form-control'}}) }}
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-xs-12">
+                    {{ form_row(form.message, {'attr': {'class':'form-control'}}) }}
+                    {{ form_row(form.Send, {'attr': {'class':'pull-right btn btn-lg sr-button'}}) }}
+                </div>
+            </div>
+
+            {{ form_end(form) }}
+        </div>
     </div>
 </div>
-<div class="form-group">
-    <div class="col-xs-12">
-        {{ form_row(form.email, {'attr': {'class':'form-control'}}) }}
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-xs-12">
-        {{ form_row(form.subject, {'attr': {'class':'form-control'}}) }}
-    </div>
-</div>
-<div class="form-group">
-    <div class="col-xs-12">
-        {{ form_row(form.message, {'attr': {'class':'form-control'}}) }}
-        {{ form_row(form.Send, {'attr': {'class':'pull-right btn btn-lg sr-button'}}) }}
-    </div>
-</div>
-{{ form_end(form) }}
+{% endblock %}
