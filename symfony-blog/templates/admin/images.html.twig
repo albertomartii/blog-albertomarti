@@ -1,16 +1,54 @@
 {% extends 'base.html.twig' %}
-{% block title%}Images{% endblock %}
-{% block body%}
+{% block title %}Images{% endblock %}
+{% block body %}
 <!-- Principal Content Start -->
 <div id="images">
     <div class="container">
         <div class="col-xs-12 col-sm-8 col-sm-push-2">
             <h1>Images</h1>
-            {{ form(form, {'attr': {'class':'form-horizontal'}}) }}
+            {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+            {{ form_widget(form) }}
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary pull-right">Send</button>
+            </div>
+            {{ form_end(form) }}
             <hr class="divider">
+
+            <table class="table table-bordered table-hover">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>File</th>
+                        <th>Views</th>
+                        <th>Likes</th>
+                        <th>Downloads</th>
+                        <th>Category</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for image in images %}
+                    <tr>
+                        <td>{{ loop.index }}</td>
+                        <td>
+                            <img src="{{ asset('images/index/gallery/' ~ image.file) }}"
+                                 alt="{{ image.file }}"
+                                 style="width:150px; height:auto;">
+                        </td>
+                        <td>{{ image.numViews }}</td>
+                        <td>{{ image.numLikes }}</td>
+                        <td>{{ image.numDownloads }}</td>
+                        <td>{{ image.category ? image.category.name : '-' }}</td>
+                    </tr>
+                    {% else %}
+                    <tr>
+                        <td colspan="6" class="text-center">No hay imágenes todavía.</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
         </div>
     </div>
 </div>
-
-<!-- Principal Content Start -->
+<!-- Principal Content End -->
 {% endblock %}

@@ -8,19 +8,33 @@ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
+use Symfony\Component\Validator\Constraints\File;
 
 class ImageFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('file')
+            ->add('file', FileType::class, [
+                'mapped' => false,
+                'constraints' => [
+                    new File([
+                        'mimeTypes' => [
+                            'image/jpeg',
+                            'image/png',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid image file',
+                    ])
+                ],
+            ])
+
             ->add('numLikes')
             ->add('numViews')
             ->add('numDownloads')
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'choice_label' => 'id',
+                'choice_label' => 'name',
             ])
         ;
     }

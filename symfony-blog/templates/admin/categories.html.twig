@@ -6,6 +6,12 @@
     <div class="container">
         <div class="col-xs-12 col-sm-8 col-sm-push-2">
             <h1>Categories</h1>
+            {{ form_start(form, {'attr': {'class':'form-horizontal'}}) }}
+            {{ form_widget(form) }}
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary pull-right">Send</button>
+            </div>
+            {{ form_end(form) }}
             <hr class="divider">
             <div>
                 <table class="table">
@@ -27,6 +33,7 @@
                     </tbody>
                 </table>
             </div>
+
 
         </div>
     </div>

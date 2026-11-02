@@ -12,11 +12,16 @@ use App\Form\ContactFormType;
 
 final class PageController extends AbstractController
 {
-    #[Route('/', name: 'home')]
-    public function index(): Response
+    #[Route('/', name: 'index')]
+    public function index(ManagerRegistry $doctrine, Request $request): Response
     {
-        return $this->render('index.html.twig', []);
+        $repository = $doctrine->getRepository(Category::class);
+
+        $categories = $repository->findAll();
+
+        return $this->render('page/index.html.twig', ['categories' => $categories]);
     }
+
 
     #[Route('/contact', name: 'contact')]
     public function contact(ManagerRegistry $doctrine, Request $request): Response
@@ -41,6 +46,7 @@ final class PageController extends AbstractController
     {
         return $this->render('thankyou.html.twig', []);
     }
+
 }
 
 
