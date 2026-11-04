@@ -1,0 +1,7 @@
+<div class="comment">
+    <div class="comment-header">
+        <strong class="comment-author">{{ comment.name }}</strong>
+        <span class="comment-date">{{ comment.publishedAt | date('d F Y') }}</span>
+    </div>
+    <p class="comment-text">{{ comment.text }}</p>
+</div>

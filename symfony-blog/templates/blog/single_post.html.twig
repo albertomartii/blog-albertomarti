@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %}{{ post.title ?? 'Post' }}{% endblock %}
+{% block body %}
+
+{% if not post %}
+<h2>Post not found</h2>
+{% else %}
+{{ post.title }}
+{{ asset('images/blog/' ~ post.image) }}
+{{ post.content }}
+{{ post.postUser.name }}
+{{ post.publishedAt | date('d') }} {{ post.publishedAt | date('F') }}
+{% endif %}
+{% for comment in post.comments %}
+    {{ include('partials/_post_comments.html.twig') }}
+{% endfor %}
+{% endblock %}

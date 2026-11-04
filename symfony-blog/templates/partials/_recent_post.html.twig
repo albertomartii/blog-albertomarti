@@ -1,0 +1,15 @@
+<div class="recent-post">
+    <a href="{{ path('single_post', {'slug': recent.slug}) }}">
+        <div class="recent-post-image">
+            <span class="recent-post-date">
+                {{ recent.publishedAt | date('d') | upper }} {{ recent.publishedAt | date('F') | upper }}
+            </span>
+            <img src="{{ asset('images/blog/' ~ recent.image) }}" alt="{{ recent.title }}">
+        </div>
+        <div class="recent-post-info">
+            <span><i class="fa fa-heart"></i> {{ recent.numLikes }}</span>
+            <span><i class="fa fa-comments"></i> {{ recent.numComments }}</span>
+        </div>
+        <h4 class="recent-post-title">{{ recent.title }}</h4>
+    </a>
+</div>
