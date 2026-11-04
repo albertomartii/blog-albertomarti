@@ -15,7 +15,7 @@ class CommentRepository extends ServiceEntityRepository
     {
         parent::__construct($registry, Comment::class);
     }
-    public function buildForm(FormBuilderInterface $builder, array $options): voi  d
+    public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
             ->add('name', null, ['attr' => ['class' => 'form-control']])
