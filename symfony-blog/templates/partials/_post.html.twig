@@ -12,8 +12,8 @@
         <div class="post-footer">
             <a class="btn" href="{{ path('single_post', {'slug':post.slug}) }}">READ MORE...</a>
             <span>
-                <i class="fa fa-heart sr-icons"></i> {{post.numLikes}}
-                <i class="fa fa-comments sr-icons"></i> {{post.numComments}}
+                <i class="fa fa-heart sr-icons"></i> <span id="likes-{{post.slug}}">{{post.numLikes}}</span>
+                <i class="fa fa-comments sr-icons"></i> <a class="page-scroll" href="{{ path('single_post', {'slug':post.slug}) }}#form"><span id="comments-{{post.slug}}">{{post.numComments}}</span></a>
             </span>
         </div>
     </div>

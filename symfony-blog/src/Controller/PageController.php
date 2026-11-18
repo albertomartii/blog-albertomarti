@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\Persistence\ManagerRegistry;
+use App\Entity\Category;
 use App\Entity\Contact;
 use App\Form\ContactFormType;
 
@@ -19,7 +20,7 @@ final class PageController extends AbstractController
 
         $categories = $repository->findAll();
 
-        return $this->render('page/index.html.twig', ['categories' => $categories]);
+        return $this->render('index.html.twig', ['categories' => $categories]);
     }
 
 
